@@ -169,7 +169,7 @@ const messages = [
   'এটাই তো ক্যাম্পাস লজিক, ভাবি!',
   'বারবার আসছে, ভাবি—দুরের কথা নয়!',
   'শেষের ফাইনাল এসেছে, ভাবি!',
-  'এ সেকশন +১, ভাবি!',
+  'কম্বো +১, ভাবি!',
   'বি সেকশন এখন পুরো মাঠ জুড়ে, ভাবি!',
 ];
 
@@ -220,7 +220,7 @@ const getWaveCommentary = (wave: number) => {
 
 const getCheckpointText = (wave: number) => {
   if (wave === 5) return 'ভাবি, এতদূর আসছো! একটু শ্বাস নাও। 😭';
-  if (wave === 10) return 'ওই দেখো, A Section টিকে আছে! একটু ঘুরে আসো, ভাবি.';
+  if (wave === 10) return 'ওই দেখো, খেলোয়াড় এখনো টিকে আছে! একটু ঘুরে আসো, ভাবি.';
   if (wave === 15) return 'এই তো, এখনো তুই চালিয়ে যাচ্ছিস!';
   if (wave === 20) return 'একটু রিফিল, ভাবি—শেষটা আসছে।';
   return 'চেকপয়েন্ট reached ✅ — একটু ধরে ফেলো, ভাবি!';
@@ -768,7 +768,7 @@ function App() {
   const finishVictory = () => {
     const state = gameRef.current;
     state.state = 'victory';
-    state.statusMessage = 'A SECTION WINS! 🏆';
+    state.statusMessage = 'CAMPAIGN COMPLETE! 🏆';
     state.bossActive = false;
     state.enemies = [];
     state.pendingSpawns = [];
@@ -811,7 +811,7 @@ function App() {
       settings: settingsRef.current,
     });
     playExplosion(3.2);
-    setHud((prev) => ({ ...prev, screen: 'victory', statusMessage: 'A SECTION WINS! 🏆' }));
+    setHud((prev) => ({ ...prev, screen: 'victory', statusMessage: 'CAMPAIGN COMPLETE! 🏆' }));
     syncHud();
   };
 
@@ -1026,7 +1026,7 @@ function App() {
       const popupPoints = isFinalBoss ? 10000 : isBoss ? 1000 : enemy.type === 'basic' ? 100 : 250;
       state.floatingTexts.push({ x: enemy.x, y: enemy.y, text: `+${popupPoints.toLocaleString()}`, color: isBoss ? '#ffd166' : '#e9fbff', life: 1.05, maxLife: 1.05 });
       if (state.floatingTexts.length > 24) state.floatingTexts.splice(0, state.floatingTexts.length - 24);
-      const comboMilestones: Record<number, string> = { 5: 'শুরু হলো!', 10: 'ভাবি, aim ভালোই!', 25: 'আজকে তো অন্য level!', 50: 'A SECTION MODE 🔥', 100: 'LEGENDARY!' };
+      const comboMilestones: Record<number, string> = { 5: 'শুরু হলো!', 10: 'ভাবি, aim ভালোই!', 25: 'আজকে তো অন্য level!', 50: 'LEGENDARY MODE 🔥', 100: 'LEGENDARY!' };
       const comboLine = comboMilestones[state.combo];
       if (comboLine) {
         if (settingsRef.current.banglaComedy) state.floatingTexts.push({ x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.36, text: comboLine, color: state.combo >= 50 ? '#ffd166' : '#91f1ff', life: 1.5, maxLife: 1.5 });
@@ -1720,7 +1720,7 @@ function App() {
       if (hitPlayer && player.invulnerable <= 0) {
         if (player.shieldTimer > 0) {
           player.shieldTimer = 0;
-          if (!state.eventName.startsWith('laka')) state.statusMessage = 'A SECTION EVADED THE SMASH';
+          if (!state.eventName.startsWith('laka')) state.statusMessage = 'PLAYER EVADED THE SMASH';
         } else {
           const collisionDamage = enemy.type === 'boss' ? 30 : enemy.type === 'bomber' ? 24 : enemy.type === 'speedster' || enemy.type === 'runner' ? 20 : 14;
           player.hp = Math.max(0, player.hp - collisionDamage);
@@ -1729,7 +1729,7 @@ function App() {
           state.damageFlash = 0.14;
           state.combo = 0;
           state.shakeTimer = settingsRef.current.screenShake && !settingsRef.current.reducedMotion ? 0.18 : 0;
-          if (!state.eventName.startsWith('laka')) state.statusMessage = 'A SECTION HAS TAKEN DAMAGE';
+          if (!state.eventName.startsWith('laka')) state.statusMessage = 'PLAYER HAS TAKEN DAMAGE';
         }
         player.invulnerable = 0.8;
         if (player.hp <= 0) {
@@ -2048,7 +2048,7 @@ function App() {
       context.fillStyle = 'rgba(111, 226, 247, 0.8)';
       context.font = 'bold 11px sans-serif';
       context.textAlign = 'center';
-      context.fillText('A SECTION · PLAYER 1', player.x, playerDrawY + 42);
+      context.fillText('PLAYER 1', player.x, playerDrawY + 42);
     }
 
     state.powerUps.forEach((power) => {
@@ -2382,8 +2382,8 @@ function App() {
     const state = gameRef.current.state;
     if (state === 'menu') return 'বি সেকশন ইনভেশন';
     if (state === 'gameover') return 'আজকে আর পারলাম না 😭';
-    if (state === 'victory') return 'A SECTION WINS';
-    return 'A SECTION STRIKES BACK';
+    if (state === 'victory') return 'B Section Roasted, Bhabi Caught';
+    return 'B Section Roasted, Bhabi Caught';
   }, [hud.screen]);
 
   const startGame = () => {
@@ -2439,7 +2439,7 @@ function App() {
   };
 
   const clearLocalRecords = () => {
-    const confirmed = window.confirm('এই ডিভাইসের B Section Invasion-এর নাম, রেকর্ড ও সেটিংস মুছে ফেলবেন?');
+    const confirmed = window.confirm('এই ডিভাইসের নাম, রেকর্ড ও সেটিংস মুছে ফেলবেন?');
     if (!confirmed) return;
     [STORAGE_KEY, NAME_KEY, CAMPAIGN_SCORES_KEY, ENDLESS_SCORES_KEY, SETTINGS_KEY, 'b-section-player-name', 'b-section-campaign-scores', 'b-section-endless-scores'].forEach((key) => window.localStorage.removeItem(key));
     setLeaderboard([]);
@@ -2513,9 +2513,9 @@ function App() {
   };
 
   const shareResults = async () => {
-    const text = `B Section Invasion · ${playerName} · ${hud.score} points · Wave ${hud.wave}${gameRef.current.endlessMode ? '' : '/40'}`;
+    const text = `B Section Roasted, Bhabi Caught · ${playerName} · ${hud.score} points · Wave ${hud.wave}${gameRef.current.endlessMode ? '' : '/40'}`;
     try {
-      if (navigator.share) await navigator.share({ title: 'B Section Invasion', text });
+      if (navigator.share) await navigator.share({ title: 'B Section Roasted, Bhabi Caught', text });
       else await navigator.clipboard.writeText(text);
     } catch {
       gameRef.current.statusMessage = 'রেজাল্ট শেয়ার করা যায়নি, ভাবি!';
@@ -2605,7 +2605,7 @@ function App() {
     <div className={`game-shell ${hud.screen === 'menu' ? 'menu-screen' : 'play-screen'} ${reducedMotion ? 'reduced-motion' : ''}`}>
       {hud.screen === 'menu' && (
         <nav className="top-nav" aria-label="প্রধান নেভিগেশন">
-          <a className="brand-mark" href="#top" aria-label="B Section Invasion home">B<span>·</span>INVASION</a>
+          <a className="brand-mark" href="#top" aria-label="B Section Roasted, Bhabi Caught home">B<span>·</span>ROASTED</a>
           <div className="nav-actions">
             <button className="nav-link" onClick={() => setShowHowTo(true)}>কীভাবে খেলি</button>
             <button className="nav-link" onClick={() => setShowLeaderboard(true)}>লিডারবোর্ড</button>
@@ -2617,7 +2617,7 @@ function App() {
       )}
       <div className="hud-header">
         <div className="stat-block">
-          <span className="label">A SECTION · HP</span>
+          <span className="label">PLAYER · HP</span>
           <div className="hp-stat"><strong><span className="hp-heart">♥</span> {hud.playerHp}<small> / {hud.playerMaxHp}</small></strong><div className="hp-rail"><i style={{ width: `${clamp((hud.playerHp / hud.playerMaxHp) * 100, 0, 100)}%`, background: hud.playerHp / hud.playerMaxHp < 0.3 ? '#ff647c' : hud.playerHp / hud.playerMaxHp < 0.6 ? '#ffd166' : '#79dfba' }} /></div></div>
         </div>
         <div className="stat-block center">
@@ -2631,6 +2631,7 @@ function App() {
           <small className="best-score">BEST {(gameRef.current.endlessMode ? Math.max(bestEndlessScore, hud.score) : Math.max(hud.highScore, hud.score)).toLocaleString()}</small>
         </div>
       </div>
+      {hud.screen === 'playing' && <button className="pause-button" onClick={handlePauseToggle} aria-label="Pause game">Ⅱ <span>PAUSE</span></button>}
       {hud.screen !== 'menu' && hud.powerUps.length > 0 && <div className="active-powerups" aria-label="Active power-ups">
         {hud.powerUps.map((power) => <div className="active-powerup" key={power.key} style={{ '--power-color': power.color } as React.CSSProperties}>
           <span className="power-icon">{power.icon}</span><span className="power-label">{power.label}</span><strong>{power.time}s</strong><i><b style={{ width: `${Math.min(100, (power.time / 10) * 100)}%` }} /></i>
@@ -2640,9 +2641,9 @@ function App() {
       <main className={`homepage-layout ${hud.screen === 'menu' ? 'homepage-active' : 'homepage-inactive'}`}>
       {hud.screen === 'menu' && <>
         <section className="homepage-copy">
-          <p className="eyebrow">A SECTION × B SECTION</p>
-          <h1>বি সেকশন<br />ইনভেশন</h1>
-          <p className="homepage-subtitle">A Section বনাম B Section</p>
+          <p className="eyebrow">ARCADE SHOOTER</p>
+          <h1>B Section<br />Roasted,<br />Bhabi Caught</h1>
+          <p className="homepage-subtitle">বি সেকশন রোস্টেড, ভাবি ধরা!</p>
           <p className="homepage-description"><span>ওরা উপর থেকে আসবে।</span><span>তুমি নিচ থেকে সামলাবে।</span><small>আর হ্যাঁ... ওরা বারবার আসবে। 😭</small></p>
           <div className="homepage-actions"><button onClick={startGame}>শুরু করি 🔥</button><button className="ghost" onClick={() => setShowHowTo(true)}>কীভাবে খেলবো</button></div>
           <p className="player-name-label">খেলোয়াড়: <strong>{playerName || 'নাম যোগ করুন'}</strong> <button onClick={openNameEditor}>নাম</button></p>
@@ -2670,9 +2671,9 @@ function App() {
           <div className="game-overlay visible">
             <div className="panel intro-panel">
               <div className="hero-copy">
-                <p className="eyebrow">ARCADE SHOOTER · A SECTION ✈ বনাম B SECTION</p>
+                <p className="eyebrow">ARCADE SHOOTER</p>
                 <h1>{screenTitle}</h1>
-                <p className="subtitle">A Section বনাম B Section</p>
+                <p className="subtitle">B Section Roasted, Bhabi Caught</p>
                 <p className="hero-blurb">ওরা উপর থেকে আসবে।<br />তুমি নিচ থেকে সামলাবে।<br />আর হ্যাঁ... ওরা বারবার আসবে। 😭</p>
                 <span className="hero-controls">WASD / ARROWS <b>MOVE</b><i /> SPACE <b>FIRE</b></span>
               </div>
@@ -2733,7 +2734,7 @@ function App() {
             <div className="panel victory-panel">
               <div className="victory-badge">🏆 CAMPAIGN COMPLETE</div>
               <div className="result-player-name">{playerName}</div>
-              <h2>A SECTION WINS! 🏆</h2>
+              <h2>B Section Roasted, Bhabi Caught 🏆</h2>
               <p className="victory-subtitle">ভাবি... আজকে আমরা সত্যিই পেরেছি। ❤️</p>
               <div className="summary-grid victory-stats">
                 <div><span>Score</span><strong>{hud.score.toLocaleString()}</strong></div>
@@ -2823,7 +2824,7 @@ function App() {
       </div>
 
       {hud.screen === 'playing' && <div className="mobile-controls">
-        <div className="virtual-joystick" aria-label="Movement joystick" onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); const rect = event.currentTarget.getBoundingClientRect(); const dx = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2); const dy = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2); inputRef.current.left = dx < -0.25; inputRef.current.right = dx > 0.25; inputRef.current.up = dy < -0.25; inputRef.current.down = dy > 0.25; }} onPointerMove={(event) => { if (!event.currentTarget.hasPointerCapture(event.pointerId)) return; const rect = event.currentTarget.getBoundingClientRect(); const dx = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2); const dy = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2); inputRef.current.left = dx < -0.25; inputRef.current.right = dx > 0.25; inputRef.current.up = dy < -0.25; inputRef.current.down = dy > 0.25; }} onPointerUp={(event) => { event.currentTarget.releasePointerCapture(event.pointerId); Object.assign(inputRef.current, { left: false, right: false, up: false, down: false }); }} onPointerCancel={() => Object.assign(inputRef.current, { left: false, right: false, up: false, down: false })}><span>MOVE</span><i /></div>
+        <div className="virtual-joystick" aria-label="Movement joystick" onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); const rect = event.currentTarget.getBoundingClientRect(); const dx = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2); const dy = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2); inputRef.current.left = dx < -0.25; inputRef.current.right = dx > 0.25; inputRef.current.up = dy < -0.25; inputRef.current.down = dy > 0.25; }} onPointerMove={(event) => { if (!event.currentTarget.hasPointerCapture(event.pointerId)) return; const rect = event.currentTarget.getBoundingClientRect(); const dx = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2); const dy = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2); inputRef.current.left = dx < -0.25; inputRef.current.right = dx > 0.25; inputRef.current.up = dy < -0.25; inputRef.current.down = dy > 0.25; }} onPointerUp={(event) => { event.currentTarget.releasePointerCapture(event.pointerId); Object.assign(inputRef.current, { left: false, right: false, up: false, down: false }); }} onPointerCancel={() => Object.assign(inputRef.current, { left: false, right: false, up: false, down: false })}><span>MOVE</span><i /><small>DRAG TO MOVE</small></div>
         <button className="fire-button" aria-label="Fire continuously" onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); inputRef.current.firing = true; }} onPointerUp={() => { inputRef.current.firing = false; }} onPointerCancel={() => { inputRef.current.firing = false; }} onContextMenu={(event) => event.preventDefault()}>FIRE</button>
       </div>}
       {showControlsHint && hud.screen === 'playing' && <div className="controls-hint">WASD / ARROWS MOVE · SPACE FIRE <button onClick={() => setShowControlsHint(false)} aria-label="Dismiss controls hint">×</button></div>}
