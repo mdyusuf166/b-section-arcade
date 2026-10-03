@@ -1,0 +1,146 @@
+started_at=2026-10-03T02:33:24+06:00
+mode=production-preview
+inputs=Space plus telemetry-guided ordinary mouse steering
+00001.0s wave=01 hp=120 active=2 queue=6 screen=playing
+00005.2s telemetry wave=01 hp=120 score=875 combo=2 active=6 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00010.2s telemetry wave=01 hp=120 score=1175 combo=3 active=5 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00015.6s telemetry wave=01 hp=120 score=1500 combo=4 active=4 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00020.8s telemetry wave=01 hp=120 score=2575 combo=6 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00026.1s telemetry wave=01 hp=120 score=3475 combo=7 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00031.3s telemetry wave=01 hp=120 score=3475 combo=7 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00036.5s telemetry wave=01 hp=120 score=4400 combo=8 active=0 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00037.5s wave=02 hp=120 active=1 queue=9 screen=playing
+00041.6s telemetry wave=02 hp=120 score=5325 combo=10 active=6 queue=2 event=inactive boss=False phase=0 mode=campaign state=playing
+00046.9s telemetry wave=02 hp=120 score=7950 combo=16 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00052.0s telemetry wave=02 hp=120 score=8600 combo=17 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00057.2s telemetry wave=02 hp=120 score=8600 combo=17 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00059.3s event=traffic wave=2
+00062.5s telemetry wave=02 hp=120 score=11450 combo=21 active=4 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00067.6s telemetry wave=02 hp=120 score=13025 combo=23 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00072.8s telemetry wave=02 hp=120 score=13700 combo=24 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00075.0s wave=03 hp=120 active=1 queue=11 screen=playing
+00078.1s telemetry wave=03 hp=120 score=15425 combo=26 active=5 queue=6 event=inactive boss=False phase=0 mode=campaign state=playing
+00083.3s telemetry wave=03 hp=120 score=23675 combo=35 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00088.5s telemetry wave=03 hp=120 score=24650 combo=36 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00093.8s telemetry wave=03 hp=120 score=24650 combo=36 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00096.8s event=fakeout wave=3
+00098.9s telemetry wave=04 hp=120 score=25800 combo=37 active=0 queue=14 event=inactive boss=False phase=0 mode=campaign state=playing previous-wave-clear=True
+00098.9s wave=04 hp=120 active=0 queue=14 screen=playing
+00104.2s telemetry wave=04 hp=120 score=26975 combo=38 active=8 queue=5 event=inactive boss=False phase=0 mode=campaign state=playing
+00109.5s telemetry wave=04 hp=120 score=28175 combo=39 active=12 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00114.8s telemetry wave=04 hp=120 score=31150 combo=41 active=10 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00120.0s telemetry wave=04 hp=120 score=32275 combo=42 active=9 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00125.2s telemetry wave=04 hp=120 score=33425 combo=43 active=8 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00130.2s telemetry wave=04 hp=120 score=34600 combo=44 active=7 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00135.5s telemetry wave=04 hp=120 score=35950 combo=45 active=6 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00140.7s telemetry wave=04 hp=120 score=37825 combo=46 active=5 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00146.0s telemetry wave=04 hp=120 score=41800 combo=49 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00151.3s telemetry wave=04 hp=120 score=43125 combo=50 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00156.6s telemetry wave=04 hp=120 score=43125 combo=50 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00161.8s telemetry wave=04 hp=120 score=43125 combo=50 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00163.9s wave=05 hp=140 active=0 queue=16 screen=playing
+00167.0s telemetry wave=05 hp=140 score=48450 combo=53 active=3 queue=11 event=inactive boss=False phase=0 mode=campaign state=playing
+00172.3s telemetry wave=05 hp=140 score=51975 combo=55 active=10 queue=2 event=inactive boss=False phase=0 mode=campaign state=playing
+00177.5s telemetry wave=05 hp=140 score=56625 combo=58 active=9 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00183.0s telemetry wave=05 hp=140 score=63775 combo=62 active=5 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00188.2s telemetry wave=05 hp=140 score=67100 combo=64 active=3 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00193.5s telemetry wave=05 hp=140 score=68950 combo=65 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00198.8s telemetry wave=05 hp=140 score=68950 combo=65 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00200.9s wave=06 hp=140 active=1 queue=17 screen=playing
+00204.0s telemetry wave=06 hp=140 score=76300 combo=69 active=3 queue=12 event=inactive boss=False phase=0 mode=campaign state=playing
+00209.4s telemetry wave=06 hp=140 score=88425 combo=75 active=6 queue=3 event=inactive boss=False phase=0 mode=campaign state=playing
+00214.7s telemetry wave=06 hp=140 score=92700 combo=77 active=7 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00220.0s telemetry wave=06 hp=140 score=102050 combo=81 active=3 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00224.2s event=meeting wave=6
+00225.3s telemetry wave=06 hp=140 score=111000 combo=85 active=6 queue=0 event=meeting boss=False phase=0 mode=campaign state=playing
+00230.5s telemetry wave=06 hp=140 score=115475 combo=87 active=4 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00235.8s telemetry wave=06 hp=140 score=125675 combo=91 active=0 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00237.9s wave=07 hp=140 active=1 queue=18 screen=playing
+00241.1s telemetry wave=07 hp=140 score=130450 combo=93 active=5 queue=13 event=inactive boss=False phase=0 mode=campaign state=playing
+00246.3s telemetry wave=07 hp=140 score=140600 combo=97 active=10 queue=4 event=inactive boss=False phase=0 mode=campaign state=playing
+00251.5s telemetry wave=07 hp=140 score=148550 combo=100 active=11 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00256.7s telemetry wave=07 hp=140 score=154175 combo=102 active=9 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00259.8s event=fakeout wave=7
+00261.8s telemetry wave=07 hp=140 score=166375 combo=106 active=5 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00266.9s telemetry wave=07 hp=140 score=169125 combo=107 active=4 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00272.2s telemetry wave=07 hp=140 score=175100 combo=109 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00277.5s telemetry wave=07 hp=140 score=177925 combo=110 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00282.6s telemetry wave=07 hp=140 score=177925 combo=110 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00284.7s wave=08 hp=140 active=0 queue=22 screen=playing
+00287.8s telemetry wave=08 hp=140 score=180775 combo=111 active=5 queue=17 event=inactive boss=False phase=0 mode=campaign state=playing
+00293.1s telemetry wave=08 hp=140 score=190125 combo=114 active=10 queue=9 event=inactive boss=False phase=0 mode=campaign state=playing
+00298.3s telemetry wave=08 hp=140 score=211750 combo=121 active=12 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00303.4s telemetry wave=08 hp=140 score=211750 combo=121 active=12 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00308.6s telemetry wave=08 hp=140 score=215525 combo=122 active=11 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00313.9s telemetry wave=08 hp=140 score=228425 combo=126 active=7 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00319.1s telemetry wave=08 hp=140 score=236250 combo=128 active=5 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00324.3s telemetry wave=08 hp=140 score=243275 combo=130 active=3 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00329.5s telemetry wave=08 hp=140 score=246625 combo=131 active=2 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00334.8s telemetry wave=08 hp=140 score=250400 combo=132 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00339.9s telemetry wave=08 hp=140 score=250400 combo=132 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00345.2s telemetry wave=08 hp=140 score=250400 combo=132 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00347.3s wave=09 hp=140 active=0 queue=24 screen=playing
+00350.4s telemetry wave=09 hp=140 score=253800 combo=133 active=5 queue=19 event=inactive boss=False phase=0 mode=campaign state=playing
+00355.7s telemetry wave=09 hp=140 score=264450 combo=136 active=11 queue=10 event=inactive boss=False phase=0 mode=campaign state=playing
+00360.9s telemetry wave=09 hp=140 score=279300 combo=140 active=16 queue=1 event=inactive boss=False phase=0 mode=campaign state=playing
+00366.1s telemetry wave=09 hp=140 score=283050 combo=141 active=16 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00370.3s event=traffic wave=9
+00371.3s telemetry wave=09 hp=140 score=298650 combo=145 active=19 queue=0 event=traffic boss=False phase=0 mode=campaign state=playing
+00376.6s telemetry wave=09 hp=140 score=319275 combo=150 active=14 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00381.8s telemetry wave=09 hp=140 score=327800 combo=152 active=12 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00386.9s telemetry wave=09 hp=140 score=340375 combo=155 active=9 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00392.1s telemetry wave=09 hp=140 score=361600 combo=160 active=4 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00397.4s telemetry wave=09 hp=140 score=374275 combo=163 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00402.6s telemetry wave=09 hp=140 score=374275 combo=163 active=1 queue=0 event=inactive boss=False phase=0 mode=campaign state=playing
+00406.8s wave=10 hp=140 active=1 queue=26 screen=playing
+00407.9s telemetry wave=10 hp=140 score=379900 combo=164 active=3 queue=24 event=inactive boss=True phase=1 mode=campaign state=playing
+00413.0s telemetry wave=10 hp=140 score=388625 combo=166 active=10 queue=15 event=inactive boss=True phase=1 mode=campaign state=playing
+00418.3s telemetry wave=10 hp=140 score=402250 combo=169 active=15 queue=7 event=inactive boss=True phase=1 mode=campaign state=playing
+00423.5s telemetry wave=10 hp=140 score=424575 combo=174 active=16 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00428.9s telemetry wave=10 hp=140 score=443475 combo=178 active=12 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00434.1s telemetry wave=10 hp=132 score=448925 combo=1 active=10 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00439.4s telemetry wave=10 hp=132 score=448925 combo=1 active=10 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00444.7s telemetry wave=10 hp=132 score=449050 combo=2 active=9 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00449.9s telemetry wave=10 hp=132 score=449050 combo=2 active=9 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00455.2s telemetry wave=10 hp=132 score=449725 combo=5 active=6 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00460.6s telemetry wave=10 hp=132 score=450350 combo=6 active=5 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00465.7s telemetry wave=10 hp=132 score=451000 combo=7 active=4 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00471.0s telemetry wave=10 hp=132 score=451275 combo=8 active=3 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00476.2s telemetry wave=10 hp=132 score=452300 combo=10 active=1 queue=0 event=inactive boss=True phase=1 mode=campaign state=playing
+00481.6s telemetry wave=10 hp=132 score=452300 combo=10 active=2 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00486.7s telemetry wave=10 hp=132 score=452300 combo=10 active=3 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00492.0s telemetry wave=10 hp=132 score=452300 combo=10 active=4 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00497.3s telemetry wave=10 hp=132 score=452300 combo=10 active=4 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00502.5s telemetry wave=10 hp=122 score=452825 combo=2 active=2 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00507.7s telemetry wave=10 hp=122 score=452825 combo=2 active=2 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00512.9s telemetry wave=10 hp=122 score=452825 combo=2 active=2 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00518.0s telemetry wave=10 hp=122 score=452825 combo=2 active=2 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00523.3s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00528.6s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00533.9s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=2 mode=campaign state=playing
+00539.2s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00544.5s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00549.7s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00555.0s telemetry wave=10 hp=122 score=453125 combo=3 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00560.2s telemetry wave=10 hp=112 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00565.4s telemetry wave=10 hp=112 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00570.7s telemetry wave=10 hp=102 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00575.9s telemetry wave=10 hp=92 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00581.2s telemetry wave=10 hp=82 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00586.4s telemetry wave=10 hp=72 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00591.5s telemetry wave=10 hp=72 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00596.6s telemetry wave=10 hp=72 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00601.7s telemetry wave=10 hp=72 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00607.0s telemetry wave=10 hp=72 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00612.2s telemetry wave=10 hp=72 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00617.5s telemetry wave=10 hp=62 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=3 mode=campaign state=playing
+00622.6s telemetry wave=10 hp=52 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00627.9s telemetry wave=10 hp=42 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00633.2s telemetry wave=10 hp=32 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00638.4s telemetry wave=10 hp=12 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00643.8s telemetry wave=10 hp=12 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00649.1s telemetry wave=10 hp=2 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00654.5s telemetry wave=10 hp=2 score=453125 combo=0 active=1 queue=0 event=inactive boss=True phase=4 mode=campaign state=playing
+00655.5s terminal=gameover
+final_text="A SECTION \u00b7 HP | 0 | CAMPAIGN | WAVE 10 / 40 | COMBO \u00d70 | \u09b8\u09cd\u0995\u09cb\u09b0 | 453,125 | BEST 453,125 | \u0986\u099c\u0995\u09c7 B Section \u099c\u09bf\u09a4\u09c7 \u0997\u09c7\u09b2 \ud83d\ude2d |  | \u0986\u09ac\u09be\u09b0 \u099a\u09c7\u09b7\u09cd\u099f\u09be \u0995\u09b0\u09bf? \u098f\u09ac\u09be\u09b0 aircraft \u098f\u0995\u099f\u09c1 \u099c\u09cb\u09b0\u09c7 \u099a\u09be\u09b2\u09bf\u0993\u0964 |  | \u09b8\u09cd\u0995\u09cb\u09b0 | 453125 | \u0993\u09df\u09c7\u09ad | 10 | \u09ae\u09be\u09b0\u09be\u099f | 192 | \u09b8\u09c7\u09b0\u09be \u0995\u09ae\u09cd\u09ac\u09cb | 179 | \u09b8\u09ae\u09df | 10:54 | \u0986\u09ac\u09be\u09b0 \u099a\u09c7\u09b7\u09cd\u099f\u09be \u0995\u09b0\u09bf | \u09b9\u09cb\u09ae | \u0986\u099c\u0995\u09c7 \u0986\u09b0 \u09aa\u09be\u09b0\u09b2\u09be\u09ae \u09a8\u09be \ud83d\ude2d | \u09aa\u09be\u0993\u09df\u09be\u09b0: READY"
+console_errors=[]

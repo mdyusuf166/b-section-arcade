@@ -1,0 +1,14 @@
+started_at=2026-10-03T02:22:56+06:00
+mode=production-preview
+inputs=Space plus ordinary mouse steering
+00001.0s wave=01 hp=120 screen=playing
+00016.5s wave=02 hp=108 screen=playing
+00050.6s wave=03 hp=84 screen=playing
+00068.5s wave=04 hp=60 screen=playing
+00105.4s wave=05 hp=66 screen=playing
+00133.8s wave=06 hp=66 screen=playing
+00169.5s wave=07 hp=66 screen=playing
+00212.8s wave=08 hp=42 screen=playing
+00229.5s terminal=gameover
+final_text="A SECTION \u00b7 HP | 0 | CAMPAIGN | WAVE 08 / 40 | COMBO \u00d70 | \u09b8\u09cd\u0995\u09cb\u09b0 | 61,050 | BEST 61,050 | \u0986\u099c\u0995\u09c7 B Section \u099c\u09bf\u09a4\u09c7 \u0997\u09c7\u09b2 \ud83d\ude2d |  | \u0986\u09ac\u09be\u09b0 \u099a\u09c7\u09b7\u09cd\u099f\u09be \u0995\u09b0\u09bf? \u098f\u09ac\u09be\u09b0 aircraft \u098f\u0995\u099f\u09c1 \u099c\u09cb\u09b0\u09c7 \u099a\u09be\u09b2\u09bf\u0993\u0964 |  | \u09b8\u09cd\u0995\u09cb\u09b0 | 61050 | \u0993\u09df\u09c7\u09ad | 8 | \u09ae\u09be\u09b0\u09be\u099f | 117 | \u09b8\u09c7\u09b0\u09be \u0995\u09ae\u09cd\u09ac\u09cb | 40 | \u09b8\u09ae\u09df | 3:48 | \u0986\u09ac\u09be\u09b0 \u099a\u09c7\u09b7\u09cd\u099f\u09be \u0995\u09b0\u09bf | \u09b9\u09cb\u09ae | \u0986\u099c\u0995\u09c7 \u0986\u09b0 \u09aa\u09be\u09b0\u09b2\u09be\u09ae \u09a8\u09be \ud83d\ude2d | \u09aa\u09be\u0993\u09df\u09be\u09b0: READY"
+console_errors=[]

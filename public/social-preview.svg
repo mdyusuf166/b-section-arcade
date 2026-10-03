@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">B Section Invasion</title>
+  <desc id="description">A Section versus B Section, a Bangla arcade shooter</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#102b3d"/><stop offset="1" stop-color="#071321"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#5ed3d6" stop-opacity=".26"/><stop offset="1" stop-color="#5ed3d6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="900" cy="270" r="360" fill="url(#glow)"/>
+  <g fill="#effaff" font-family="Segoe UI, Arial, sans-serif" font-weight="800">
+    <text x="88" y="105" fill="#7ddbe1" font-size="25" letter-spacing="8">A SECTION × B SECTION</text>
+    <text x="82" y="290" font-size="88">B SECTION</text>
+    <text x="82" y="390" font-size="88">INVASION</text>
+    <text x="88" y="472" fill="#c4dde4" font-size="34" font-weight="600">A SECTION VS B SECTION</text>
+  </g>
+  <g transform="translate(885 160)" fill="none" stroke="#a6f0ee" stroke-width="8" stroke-linejoin="round">
+    <path d="M132 0 184 154l-48-22-4 89-16 24-16-24-4-89-48 22z" fill="#153c4b"/>
+    <path d="M5 8h44M27 -14v44M224 65h46M247 42v46M206 212h42M227 191v42" stroke="#ffac71" stroke-width="7"/>
+  </g>
+  <rect x="88" y="530" width="1024" height="2" fill="#7ddbe1" opacity=".35"/>
+  <text x="88" y="575" fill="#9db6c2" font-family="Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="3">40 WAVES · FINAL BOSS · ENDLESS MODE</text>
+</svg>
