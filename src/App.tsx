@@ -78,7 +78,7 @@ type PowerUp = {
 };
 
 type LeaderboardEntry = { id?: string; name: string; score: number; wave: number; date: string; duration?: number; bestCombo?: number; mode?: 'campaign' | 'endless' };
-type FloatingText = { x: number; y: number; text: string; color: string; life: number; maxLife: number };
+type FloatingText = { x: number; y: number; text: string; color: string; life: number; maxLife: number; size?: number };
 type SavedSettings = { soundOn: boolean; musicOn: boolean; screenShake: boolean; reducedMotion: boolean; banglaComedy: boolean };
 
 type HudState = {
@@ -95,6 +95,7 @@ type HudState = {
   powerMode: string;
   playerHp: number;
   playerMaxHp: number;
+  kills: number;
   powerUps: { key: string; icon: string; label: string; time: number; color: string }[];
 };
 
@@ -267,6 +268,7 @@ function App() {
     powerMode: 'READY',
     playerHp: PLAYER_MAX_HP,
     playerMaxHp: PLAYER_MAX_HP,
+    kills: 0,
     powerUps: [],
   });
   const [soundOn, setSoundOn] = useState(true);
@@ -315,6 +317,7 @@ function App() {
     waveAge: number;
     kills: number;
     totalKills: number;
+    killMilestones: number[];
     waveGoal: number;
     waveKills: number;
     bossActive: boolean;
@@ -391,6 +394,7 @@ function App() {
     waveAge: 0,
     kills: 0,
     totalKills: 0,
+    killMilestones: [],
     waveGoal: 8,
     waveKills: 0,
     bossActive: false,
@@ -480,6 +484,7 @@ function App() {
       powerMode: normalizePowerMode(Math.max(state.player.rapidTimer, state.player.doubleTimer, state.player.boostTimer, state.player.shieldTimer, state.player.megaTimer)),
       playerHp: state.player.hp,
       playerMaxHp: state.player.maxHp,
+      kills: state.totalKills,
       powerUps: ([
         { key: 'rapid', icon: '⚡', label: 'RAPID FIRE', time: state.player.rapidTimer, color: '#ffd166' },
         { key: 'double', icon: '✦', label: 'DOUBLE SHOT', time: state.player.doubleTimer, color: '#ff9f7f' },
@@ -670,6 +675,9 @@ function App() {
     });
     state.spawnTimer = wave >= 36 && wave <= 39 ? 1.1 : 0.4;
     state.waveTransition = 0;
+    const waveSubtitle = wave === 10 ? 'MINIBOSS INCOMING' : wave === 20 ? 'B SECTION BOSS 😭' : wave === 30 ? 'এরা এখনো আসছে?!' : wave === 40 ? 'FINAL BATTLE' : 'B SECTION আবার ঢুকছে 😭';
+    state.floatingTexts.push({ x: WORLD_WIDTH / 2, y: 116, text: `WAVE ${String(wave).padStart(2, '0')} · ${waveSubtitle}`, color: wave % 10 === 0 ? '#ffd166' : '#91f1ff', life: 2.1, maxLife: 2.1 });
+    if (state.floatingTexts.length > 32) state.floatingTexts.splice(0, state.floatingTexts.length - 32);
     state.waveAge = 0;
     state.waveEventDone = false;
     state.backupUsed = false;
@@ -826,6 +834,7 @@ function App() {
     setCheckpointNotice(false);
     state.kills = 0;
     state.totalKills = 0;
+    state.killMilestones = [];
     state.waveGoal = 8;
     state.waveKills = 0;
     state.bossActive = false;
@@ -1014,7 +1023,7 @@ function App() {
     if (enemy.hp <= 0) {
       const isBoss = enemy.type === 'boss';
       const isFinalBoss = isBoss && state.wave === 40 && !state.endlessMode;
-      const blast = isBoss ? 82 : enemy.type === 'bomber' ? 34 : enemy.type === 'speedster' ? 11 : 18;
+      const blast = isBoss ? 90 : enemy.type === 'bomber' ? 38 : enemy.type === 'speedster' ? 13 : 21;
       spawnParticles(enemy.x, enemy.y, isBoss ? '#ffd166' : enemy.type === 'bomber' ? '#ff9a62' : '#ff7fa3', blast, isBoss ? 5 : 3.2);
       state.score += enemy.points + state.combo * 25;
       state.combo += 1;
@@ -1025,6 +1034,13 @@ function App() {
       state.bestCombo = Math.max(state.bestCombo, state.combo);
       const popupPoints = isFinalBoss ? 10000 : isBoss ? 1000 : enemy.type === 'basic' ? 100 : 250;
       state.floatingTexts.push({ x: enemy.x, y: enemy.y, text: `+${popupPoints.toLocaleString()}`, color: isBoss ? '#ffd166' : '#e9fbff', life: 1.05, maxLife: 1.05 });
+      state.floatingTexts.push({ x: enemy.x, y: enemy.y - 20 - (state.totalKills % 3) * 24, text: 'BHABI CAUGHT 😭❤️', color: isBoss ? '#ffd166' : '#ffb0bd', life: 1.35, maxLife: 1.35, size: isBoss ? 34 : 29 });
+      const killMilestones: Record<number, string> = { 5: '5 KILLS · BHABI CAUGHT 😭❤️', 10: '10 KILLS · BHABI CAUGHT 🔥', 25: '25 KILLS · BHABI CAUGHT 💀', 50: '50 KILLS · BHABI CAUGHT 😭🔥', 100: '100 KILLS · BHABI CAUGHT 👑', 200: '200 KILLS · LEGENDARY 👑', 500: '500 KILLS · UNSTOPPABLE 👑' };
+      const killMilestone = killMilestones[state.totalKills];
+      if (killMilestone && !state.killMilestones.includes(state.totalKills)) {
+        state.killMilestones.push(state.totalKills);
+        state.floatingTexts.push({ x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.3, text: killMilestone, color: '#ffd166', life: 2.2, maxLife: 2.2 });
+      }
       if (state.floatingTexts.length > 24) state.floatingTexts.splice(0, state.floatingTexts.length - 24);
       const comboMilestones: Record<number, string> = { 5: 'শুরু হলো!', 10: 'ভাবি, aim ভালোই!', 25: 'আজকে তো অন্য level!', 50: 'LEGENDARY MODE 🔥', 100: 'LEGENDARY!' };
       const comboLine = comboMilestones[state.combo];
@@ -1032,6 +1048,9 @@ function App() {
         if (settingsRef.current.banglaComedy) state.floatingTexts.push({ x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.36, text: comboLine, color: state.combo >= 50 ? '#ffd166' : '#91f1ff', life: 1.5, maxLife: 1.5 });
         if (settingsRef.current.banglaComedy) state.statusMessage = comboLine;
         playTone(state.combo >= 50 ? 740 : 520, 0.16, 'triangle', 0.045);
+      }
+      if ([2, 3, 5, 10].includes(state.combo)) {
+        state.floatingTexts.push({ x: WORLD_WIDTH / 2, y: WORLD_HEIGHT * 0.44, text: `COMBO x${state.combo}${state.combo === 10 ? ' 🔥' : ''}`, color: '#91f1ff', life: 1.2, maxLife: 1.2 });
       }
       state.fastKillChain = state.fastKillTimer > 0 ? state.fastKillChain + 1 : 1;
       state.fastKillTimer = 3.2;
@@ -1812,6 +1831,10 @@ function App() {
 
     const state = gameRef.current;
     const { width, height } = canvas;
+    const viewportWidth = window.innerWidth;
+    const objectScale = viewportWidth <= 720 ? 1.5 : viewportWidth <= 1024 ? 1.35 : 1.2;
+    const bulletVisualScale = viewportWidth <= 720 ? 1.2 : viewportWidth <= 1024 ? 1.12 : 1.08;
+    const enemyTypeScale: Record<EnemyType, number> = { basic: 1, swarm: 0.9, bomber: 1.08, speedster: 0.88, runner: 0.96, vip: 1.12, boss: 1 };
     context.clearRect(0, 0, width, height);
     context.save();
     if (settingsRef.current.screenShake && !settingsRef.current.reducedMotion && state.shakeTimer > 0) {
@@ -1908,7 +1931,8 @@ function App() {
 
     state.bullets.forEach((bullet) => {
       context.strokeStyle = bullet.color;
-      context.lineWidth = Math.max(2, bullet.r * 0.85);
+      const visibleRadius = bullet.r * bulletVisualScale;
+      context.lineWidth = Math.max(2.5, visibleRadius * 0.9);
       context.globalAlpha = 0.45;
       context.beginPath();
       context.moveTo(bullet.x - bullet.vx * 0.025, bullet.y - bullet.vy * 0.025);
@@ -1917,9 +1941,9 @@ function App() {
       context.globalAlpha = 1;
       context.fillStyle = bullet.color;
       context.shadowColor = bullet.color;
-      context.shadowBlur = 12;
+      context.shadowBlur = 16;
       context.beginPath();
-      context.arc(bullet.x, bullet.y, bullet.r, 0, Math.PI * 2);
+      context.arc(bullet.x, bullet.y, visibleRadius, 0, Math.PI * 2);
       context.fill();
       context.shadowBlur = 0;
     });
@@ -1944,12 +1968,16 @@ function App() {
 
     state.enemies.forEach((enemy) => {
       const isBoss = enemy.type === 'boss';
+      const typeScale = isBoss && state.wave === 40 && !state.endlessMode ? 1.16 : enemyTypeScale[enemy.type];
+      const enemyVisualScale = objectScale * typeScale;
+      const movementBob = Math.sin(enemy.phase * 2) * 1.2;
       context.save();
-      context.translate(enemy.x, enemy.y);
+      context.translate(enemy.x, enemy.y + movementBob);
+      context.scale(enemyVisualScale, enemyVisualScale);
       context.globalAlpha = enemy.isFakeDead ? 0.4 : 1;
       context.fillStyle = (enemy.hitFlash ?? 0) > 0 ? '#fff0b0' : isBoss ? '#ff4d6d' : '#ff8d61';
       context.shadowColor = isBoss ? '#ff4d6d' : '#ff8d61';
-      context.shadowBlur = isBoss ? 25 : 13;
+      context.shadowBlur = isBoss ? 31 : 18;
       if (isBoss) {
         context.beginPath();
         context.moveTo(-enemy.w * 0.5, -enemy.h * 0.12);
@@ -1998,12 +2026,13 @@ function App() {
     const victoryTime = performance.now() / 1000;
     const playerDrawY = state.state === 'victory' ? height * 0.53 + Math.sin(victoryTime * 1.5) * 8 : player.y;
     context.save();
-    context.translate(player.x, playerDrawY + player.recoil * 0.22);
+    context.translate(player.x, playerDrawY + player.recoil * 0.22 + Math.sin(victoryTime * 3.1) * 1.2);
+    context.scale(objectScale, objectScale);
     if (player.shieldTimer > 0) {
       context.strokeStyle = `rgba(125, 232, 247, ${0.48 + Math.sin(victoryTime * 5) * 0.12})`;
       context.lineWidth = 2;
       context.shadowColor = '#7de8f7';
-      context.shadowBlur = 13;
+      context.shadowBlur = 18;
       context.beginPath();
       context.ellipse(0, 0, player.w * 0.92, player.h * 1.25, 0, 0, Math.PI * 2);
       context.stroke();
@@ -2014,7 +2043,7 @@ function App() {
     const flameLength = player.velocityY < -20 ? 14 : player.velocityY > 20 ? 7 : 10;
     context.fillStyle = player.velocityY > 20 ? '#ffb15e' : '#66e8ff';
     context.shadowColor = context.fillStyle;
-    context.shadowBlur = player.muzzleFlash > 0 ? 18 : state.combo >= 5 ? 20 : 10;
+    context.shadowBlur = player.muzzleFlash > 0 ? 26 : state.combo >= 5 ? 28 : 19;
     context.beginPath();
     context.moveTo(-6, player.h / 3);
     context.lineTo(0, player.h / 2 + flameLength + Math.random() * 4);
@@ -2034,8 +2063,16 @@ function App() {
     context.shadowBlur = 0;
     context.fillStyle = '#f2fbff';
     context.beginPath();
-    context.ellipse(0, -2, 4, 8, 0, 0, Math.PI * 2);
+    context.ellipse(0, -2, 5, 10, 0, 0, Math.PI * 2);
     context.fill();
+    context.strokeStyle = 'rgba(226, 252, 255, 0.72)';
+    context.lineWidth = 1.35;
+    context.beginPath();
+    context.moveTo(-player.w * 0.3, player.h * 0.28);
+    context.lineTo(-player.w * 0.1, player.h * 0.1);
+    context.moveTo(player.w * 0.3, player.h * 0.28);
+    context.lineTo(player.w * 0.1, player.h * 0.1);
+    context.stroke();
     if (player.muzzleFlash > 0) {
       context.fillStyle = '#fff4b0';
       context.beginPath();
@@ -2087,11 +2124,11 @@ function App() {
       context.save();
       context.globalAlpha = Math.min(1, item.life * 1.8);
       context.textAlign = 'center';
-      context.font = item.maxLife > 1.2 ? 'bold 27px sans-serif' : 'bold 20px sans-serif';
+      context.font = `bold ${item.size ?? (item.maxLife > 1.2 ? 27 : 20)}px sans-serif`;
       context.fillStyle = item.color;
       context.shadowColor = item.color;
       context.shadowBlur = 10;
-      context.fillText(item.text, item.x, item.y - progress * (item.maxLife > 1.2 ? 24 : 32));
+      context.fillText(item.text, clamp(item.x, width * 0.08, width * 0.92), item.y - progress * (item.maxLife > 1.2 ? 24 : 32), width * 0.84);
       context.restore();
     });
 
@@ -2380,7 +2417,7 @@ function App() {
 
   const screenTitle = useMemo(() => {
     const state = gameRef.current.state;
-    if (state === 'menu') return 'বি সেকশন ইনভেশন';
+    if (state === 'menu') return 'B Section Roasted, Bhabi Caught';
     if (state === 'gameover') return 'আজকে আর পারলাম না 😭';
     if (state === 'victory') return 'B Section Roasted, Bhabi Caught';
     return 'B Section Roasted, Bhabi Caught';
@@ -2615,6 +2652,7 @@ function App() {
           {showMobileMenu && <div className="mobile-nav-menu"><button onClick={() => { setShowHowTo(true); setShowMobileMenu(false); }}>কীভাবে খেলি</button><button onClick={() => { setShowLeaderboard(true); setShowMobileMenu(false); }}>লিডারবোর্ড</button><button onClick={() => { setShowSettings(true); setShowMobileMenu(false); }}>সেটিংস</button></div>}
         </nav>
       )}
+      {hud.screen !== 'menu' && <div className="play-brand">B Section Roasted, Bhabi Caught</div>}
       <div className="hud-header">
         <div className="stat-block">
           <span className="label">PLAYER · HP</span>
@@ -2629,6 +2667,14 @@ function App() {
           <span className="label">স্কোর</span>
           <strong>{hud.score.toLocaleString()}</strong>
           <small className="best-score">BEST {(gameRef.current.endlessMode ? Math.max(bestEndlessScore, hud.score) : Math.max(hud.highScore, hud.score)).toLocaleString()}</small>
+        </div>
+        <div className="stat-block mobile-stat">
+          <span className="label">COMBO</span>
+          <strong>×{hud.combo}</strong>
+        </div>
+        <div className="stat-block mobile-stat">
+          <span className="label">KILLS</span>
+          <strong>{hud.kills}</strong>
         </div>
       </div>
       {hud.screen === 'playing' && <button className="pause-button" onClick={handlePauseToggle} aria-label="Pause game">Ⅱ <span>PAUSE</span></button>}
@@ -2710,20 +2756,20 @@ function App() {
         {hud.screen === 'gameover' && (
           <div className="game-overlay visible">
             <div className="panel gameover-panel">
-              <div className="result-player-name">{playerName} · তোমার ফলাফল</div>
-              <h2>আজকে B Section জিতে গেল 😭</h2>
+              <div className="result-player-name">B Section Roasted, Bhabi Caught</div>
+              <h2>GAME OVER</h2>
               <p className="result-subtitle">আবার চেষ্টা করি? এবার aircraft একটু জোরে চালিও।</p>
               <p className="result-saved">লিডারবোর্ডে তোমার ফলাফল যোগ হয়েছে</p>
               <div className="summary-grid">
                 <div><span>স্কোর</span><strong>{hud.score}</strong></div>
                 <div><span>ওয়েভ</span><strong>{hud.wave}</strong></div>
-                <div><span>মারাট</span><strong>{gameRef.current.totalKills}</strong></div>
+                <div><span>KILLS</span><strong>{gameRef.current.totalKills}</strong></div>
+                <div><span>BEST SCORE</span><strong>{Math.max(gameRef.current.endlessMode ? bestEndlessScore : hud.highScore, hud.score).toLocaleString()}</strong></div>
                 <div><span>সেরা কম্বো</span><strong>{gameRef.current.bestCombo}</strong></div>
-                <div><span>সময়</span><strong>{formatDuration(gameRef.current.totalPlayTime)}</strong></div>
               </div>
               <div className="menu-actions compact">
-                <button onClick={startGame}>আবার চেষ্টা করি</button>
-                <button className="ghost" onClick={returnToMenu}>হোম</button>
+                <button onClick={startGame}>RETRY</button>
+                <button className="ghost" onClick={returnToMenu}>HOME</button>
               </div>
             </div>
           </div>
@@ -2732,22 +2778,21 @@ function App() {
         {hud.screen === 'victory' && (
           <div className="game-overlay visible victory-scene">
             <div className="panel victory-panel">
-              <div className="victory-badge">🏆 CAMPAIGN COMPLETE</div>
+              <div className="victory-badge">B SECTION ROASTED 🔥</div>
               <div className="result-player-name">{playerName}</div>
-              <h2>B Section Roasted, Bhabi Caught 🏆</h2>
-              <p className="victory-subtitle">ভাবি... আজকে আমরা সত্যিই পেরেছি। ❤️</p>
+              <h2>BHABI CAUGHT 😭❤️</h2>
+              <p className="victory-subtitle">B Section Roasted, Bhabi Caught</p>
               <div className="summary-grid victory-stats">
+                <div><span>Waves completed</span><strong>40 / 40</strong></div>
+                <div><span>Enemies defeated</span><strong>{gameRef.current.totalKills}</strong></div>
                 <div><span>Score</span><strong>{hud.score.toLocaleString()}</strong></div>
-                <div><span>Waves</span><strong>40 / 40</strong></div>
-                <div><span>B Sections defeated</span><strong>{gameRef.current.totalKills}</strong></div>
-                <div><span>Best combo</span><strong>{gameRef.current.bestCombo}</strong></div>
-                <div><span>Time survived</span><strong>{formatDuration(gameRef.current.totalPlayTime)}</strong></div>
+                <div><span>Best score</span><strong>{Math.max(hud.highScore, hud.score).toLocaleString()}</strong></div>
               </div>
               <p className="victory-message">আজকে B Section-এর পালা শেষ। 😌</p>
               <p className="victory-tomorrow">আগামীকাল আবার দেখা হবে...</p>
               <div className="menu-actions compact">
-                <button onClick={startGame}>আবার খেলি</button>
-                <button className="ghost" onClick={startEndless}>Endless Mode</button>
+                <button onClick={startGame}>PLAY AGAIN</button>
+                <button className="ghost" onClick={startEndless}>ENDLESS MODE</button>
                 <button className="ghost" onClick={() => { void shareResults(); }}>ফলাফল শেয়ার করি</button>
                 <button className="ghost" onClick={returnToMenu}>মেইন মেনু</button>
               </div>

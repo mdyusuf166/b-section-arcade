@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap');
-
 :root {
-  font-family: 'Noto Sans Bengali', 'Segoe UI', sans-serif;
+  font-family: 'Noto Sans Bengali', 'Nirmala UI', 'Vrinda', 'Segoe UI', sans-serif;
   color: #edf6ff;
   background: #040a16;
   line-height: 1.5;
@@ -1289,6 +1287,7 @@ button.nav-link:hover {
 .game-shell.play-screen .game-stage { width: 100%; height: 100%; aspect-ratio: auto; }
 .game-shell.play-screen .game-canvas { display: block; width: 100%; height: 100%; }
 .game-shell.play-screen .hud-header { width: min(100%, 1240px); }
+.play-brand { flex: 0 0 auto; margin: 0 auto; color: #a9bdcb; font: 700 clamp(.62rem, 1.2vw, .78rem)/1.2 'Segoe UI', sans-serif; letter-spacing: .035em; text-align: center; }
 .game-shell.play-screen .hp-rail { width: clamp(70px, 10vw, 150px); height: 7px; border-radius: 99px; }
 .hp-rail i { border-radius: inherit; }
 .hp-stat strong { white-space: nowrap; }
@@ -1328,4 +1327,110 @@ button.nav-link:hover {
   .virtual-joystick { width: 72px; height: 72px; }
   .fire-button { min-width: 72px; min-height: 52px; }
   .game-shell.play-screen .bottom-bar { display: none; }
+}
+
+/* Responsive arcade layouts: reserve a compact control deck and let the field flex. */
+@supports (height: 100dvh) {
+  .game-shell.play-screen { position: relative; width: min(100%, 1500px, calc((100dvh - 210px) * 1.40625 + 48px)); height: 100dvh; min-height: 100svh; max-height: 100lvh; margin-inline: auto; padding-block: max(6px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-bottom)); overflow: hidden; overscroll-behavior: none; }
+  .game-shell.play-screen .hud-header { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .game-shell.play-screen .mobile-stat { display: block; }
+  .game-shell.play-screen .homepage-layout.homepage-inactive { display: flex; flex: 1 1 auto; min-height: 0; }
+  .game-shell.play-screen .homepage-layout.homepage-inactive { align-items: center; justify-content: center; }
+  .game-shell.play-screen .battlefield-frame { flex: 1 1 0; min-height: 0; height: auto; max-height: 100%; }
+  .game-shell.play-screen .game-stage { min-height: 0; max-height: min(900px, 100%); }
+  .game-shell.play-screen .mobile-controls { flex: 0 0 auto; }
+  .game-shell.play-screen .game-canvas { touch-action: none; user-select: none; -webkit-user-select: none; }
+  .game-shell.play-screen .bottom-bar, .game-shell.play-screen .hud-header, .game-shell.play-screen .active-powerups, .game-shell.play-screen .mobile-controls { flex-shrink: 0; }
+}
+
+@media (max-width: 720px) and (orientation: portrait) {
+  .game-shell.menu-screen { width: 100%; min-height: 100svh; min-height: 100dvh; padding: max(5px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+  .game-shell.menu-screen .top-nav { flex-basis: 48px; min-height: 48px; }
+  .game-shell.menu-screen .homepage-layout { min-height: 0; padding: 16px 0 8px; gap: 12px; }
+  .game-shell.menu-screen .homepage-copy h1 { max-width: 100%; font-size: clamp(2rem, 8.2vw, 2.65rem); line-height: 1.08; overflow-wrap: anywhere; }
+  .game-shell.menu-screen .homepage-subtitle { font-size: clamp(.88rem, 3.7vw, 1rem); }
+  .game-shell.menu-screen .homepage-description { margin-bottom: 10px; font-size: clamp(.82rem, 3.4vw, .95rem); line-height: 1.4; }
+  .game-shell.menu-screen .homepage-hints { gap: 6px 10px; margin-top: 11px; font-size: clamp(.62rem, 2.8vw, .72rem); }
+  .game-shell.menu-screen .battlefield-frame { max-height: 36svh; border-radius: 16px; }
+  .game-shell.menu-screen .game-overlay.visible { padding: 12px; }
+  .game-shell.menu-screen .intro-panel h1 { max-width: 12ch; font-size: clamp(1.7rem, 7vw, 2.15rem); line-height: 1.08; }
+  .game-shell.menu-screen .hero-blurb { font-size: clamp(.74rem, 3vw, .84rem); line-height: 1.35; }
+  .game-shell.play-screen { width: 100%; padding-inline: max(8px, env(safe-area-inset-left)) max(8px, env(safe-area-inset-right)); gap: 3px; }
+  .game-shell.play-screen .hud-header { min-height: 64px; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(28px, auto)); align-items: center; gap: 1px 3px; padding-right: 48px; }
+  .game-shell.play-screen .play-brand { min-height: 16px; font-size: clamp(.58rem, 2.45vw, .7rem); }
+  .game-shell.play-screen .stat-block { min-width: 0; padding: 1px 3px; }
+  .game-shell.play-screen .stat-block:nth-child(4) { grid-column: 1; grid-row: 2; }
+  .game-shell.play-screen .stat-block:nth-child(5) { grid-column: 2; grid-row: 2; text-align: center; }
+  .game-shell.play-screen .stat-block.right { grid-column: 3; grid-row: 1; }
+  .game-shell.play-screen .stat-block.center { grid-column: 2; grid-row: 1; }
+  .game-shell.play-screen .stat-block:first-child { grid-column: 1; grid-row: 1; }
+  .game-shell.play-screen .stat-block strong { font-size: clamp(.88rem, 3.7vw, 1.08rem); line-height: 1.15; }
+  .game-shell.play-screen .stat-block strong small { font-size: clamp(.62rem, 2.5vw, .76rem); }
+  .game-shell.play-screen .label { font-size: clamp(.61rem, 2.55vw, .76rem); line-height: 1.1; letter-spacing: .03em; white-space: nowrap; }
+  .game-shell.play-screen .combo-readout, .game-shell.play-screen .best-score { font-size: clamp(.61rem, 2.45vw, .72rem); line-height: 1.1; white-space: nowrap; }
+  .game-shell.play-screen .stat-block.center .combo-readout { display: none; }
+  .game-shell.play-screen .hp-stat { display: flex; align-items: center; gap: 3px; }
+  .game-shell.play-screen .hp-rail { display: block; width: clamp(25px, 8vw, 40px); height: 6px; }
+  .game-shell.play-screen .active-powerups { max-height: 46px; overflow-x: auto; overflow-y: hidden; }
+  .game-shell.play-screen .active-powerup { min-width: clamp(94px, 29vw, 112px); padding: 4px 6px; }
+  .game-shell.play-screen .power-label { font-size: clamp(.61rem, 2.5vw, .72rem); }
+  .game-shell.play-screen .bottom-bar { min-height: 36px; gap: 5px; }
+  .game-shell.play-screen .status-box { min-height: 36px; padding: 3px 7px; gap: 4px; }
+  .game-shell.play-screen .status-box span { font-size: clamp(.72rem, 3.1vw, .9rem); line-height: 1.15; overflow-wrap: anywhere; }
+  .game-shell.play-screen .status-box small, .game-shell.play-screen .boss-box span { font-size: clamp(.62rem, 2.5vw, .74rem); line-height: 1.1; }
+  .game-shell.play-screen .boss-box { max-width: 84px; padding: 3px 5px; }
+  .game-shell.play-screen .mobile-controls { min-height: clamp(84px, 15svh, 104px); padding: 3px 6px max(3px, env(safe-area-inset-bottom)); }
+  .game-shell.play-screen .virtual-joystick { width: clamp(88px, 25vw, 108px); height: clamp(76px, 13svh, 92px); border-radius: 24px; font-size: clamp(.88rem, 3.9vw, 1rem); }
+  .game-shell.play-screen .virtual-joystick i { width: clamp(32px, 9vw, 40px); height: clamp(32px, 9vw, 40px); }
+  .game-shell.play-screen .virtual-joystick small { bottom: 5px; font-size: clamp(.52rem, 2.2vw, .61rem); }
+  .game-shell.play-screen .fire-button { min-width: clamp(112px, 34vw, 138px); min-height: clamp(62px, 11svh, 74px); font-size: clamp(1.05rem, 4.5vw, 1.25rem); }
+  .game-shell.play-screen .pause-button { top: calc(max(7px, env(safe-area-inset-top)) + 60px); right: max(9px, env(safe-area-inset-right)); min-height: 38px; }
+  .game-shell.play-screen .gameover-panel, .game-shell.play-screen .victory-panel { width: min(94vw, 520px); max-height: calc(100svh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 18px); padding: clamp(13px, 4vw, 19px); border-radius: 16px; }
+  .game-shell.play-screen .gameover-panel h2, .game-shell.play-screen .victory-panel h2 { margin: 5px auto 8px; font-size: clamp(24px, 8vw, 42px); line-height: 1.08; overflow-wrap: anywhere; }
+  .game-shell.play-screen .gameover-panel p, .game-shell.play-screen .victory-panel p { margin-block: 5px; font-size: clamp(.78rem, 3.3vw, .93rem); line-height: 1.3; }
+  .game-shell.play-screen .gameover-panel .summary-grid, .game-shell.play-screen .victory-panel .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; margin: 8px 0; }
+  .game-shell.play-screen .gameover-panel .summary-grid div, .game-shell.play-screen .victory-panel .summary-grid div { padding: 6px 5px; }
+  .game-shell.play-screen .gameover-panel .summary-grid span, .game-shell.play-screen .victory-panel .summary-grid span { font-size: clamp(.64rem, 2.6vw, .75rem); }
+  .game-shell.play-screen .gameover-panel .summary-grid strong, .game-shell.play-screen .victory-panel .summary-grid strong { font-size: clamp(.9rem, 3.8vw, 1.08rem); }
+  .game-shell.play-screen .gameover-panel .menu-actions.compact, .game-shell.play-screen .victory-panel .menu-actions.compact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+  .game-shell.play-screen .gameover-panel .menu-actions button, .game-shell.play-screen .victory-panel .menu-actions button { width: 100%; min-height: 44px; padding: 5px 7px; font-size: clamp(.7rem, 3vw, .84rem); }
+}
+
+@media (max-width: 900px) and (min-width: 721px) and (pointer: coarse) {
+  .game-shell.play-screen { width: 100%; padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)); }
+  .game-shell.play-screen .hud-header { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .game-shell.play-screen .stat-block { padding-inline: 4px; }
+  .game-shell.play-screen .label { font-size: clamp(.7rem, 1.7vw, .9rem); }
+  .game-shell.play-screen .mobile-controls { display: flex; min-height: 104px; gap: 12px; }
+  .game-shell.play-screen .virtual-joystick { width: clamp(110px, 16vw, 142px); height: 94px; font-size: 1rem; }
+  .game-shell.play-screen .virtual-joystick small { position: absolute; bottom: 7px; font-size: .62rem; }
+  .game-shell.play-screen .fire-button { min-width: 142px; min-height: 74px; font-size: 1.2rem; }
+  .game-shell.play-screen .pause-button { display: flex; position: absolute; z-index: 6; top: max(8px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); }
+}
+
+@media (max-width: 720px) and (orientation: landscape) {
+  .game-shell.play-screen { width: 100%; padding: max(5px, env(safe-area-inset-top)) max(7px, env(safe-area-inset-right)) max(5px, env(safe-area-inset-bottom)) max(7px, env(safe-area-inset-left)); }
+  .game-shell.play-screen .hud-header { grid-template-columns: repeat(5, minmax(0, 1fr)); min-height: 40px; grid-template-rows: 1fr; padding-right: 48px; }
+  .game-shell.play-screen .play-brand { min-height: 14px; font-size: .59rem; }
+  .game-shell.play-screen .stat-block:nth-child(n) { grid-row: 1; }
+  .game-shell.play-screen .battlefield-frame { height: auto; }
+  .game-shell.play-screen .mobile-controls { position: static; width: 100%; min-height: 64px; flex-direction: row; transform: none; }
+  .game-shell.play-screen .virtual-joystick { width: 72px; height: 58px; }
+  .game-shell.play-screen .fire-button { min-width: 88px; min-height: 54px; }
+}
+
+@media (min-width: 721px) and (max-height: 760px) {
+  .game-shell.play-screen { gap: 4px; padding-block: 4px; }
+  .game-shell.play-screen .hud-header { min-height: 48px; }
+  .game-shell.play-screen .stat-block { padding-block: 2px; }
+  .game-shell.play-screen .bottom-bar { min-height: 34px; }
+  .game-shell.play-screen .mobile-controls { min-height: 0; }
+}
+
+.play-screen .game-stage, .play-screen .game-canvas, .virtual-joystick, .fire-button { touch-action: none; }
+.play-screen, .play-screen * { -webkit-tap-highlight-color: transparent; }
+.play-screen { -webkit-user-select: none; user-select: none; }
+.play-screen .gameover-panel, .play-screen .victory-panel, .play-screen .modal, .play-screen input { -webkit-user-select: text; user-select: text; }
+@media (prefers-reduced-motion: no-preference) {
+  .game-shell.play-screen .battlefield-frame { transition: height 180ms ease-out; }
 }
